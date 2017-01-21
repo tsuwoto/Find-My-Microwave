@@ -15,9 +15,8 @@
     "use strict";
       function initMap() {
         var gtech = {lat: 33.7756, lng: -84.3963};
-        var culc = {lat: 33.774792, lng: -84.396386};
         var studentcenter = {lat: 33.7739, lng: -84.3988};
-        var microwave_locations = [gtech, culc, studentcenter];
+        var microwave_locations = [gtech, studentcenter];
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 18,
           center: gtech
