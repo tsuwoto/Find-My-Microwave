@@ -58,15 +58,38 @@
 
         <script>
           function initMap() {
-            var uluru = {lat: 33.775463, lng: -84.396881};
-            var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 15,
-              center: uluru
-            });
-            var marker = new google.maps.Marker({
-              position: uluru,
-              map: map
-            });
+           var gtech = {lat: 33.7756, lng: -84.3963};
+           var studentcenter = {lat: 33.7739, lng: -84.3988};
+           var culc = {lat: 33.774953, lng: -84.396295};
+           var microwave_locations = [studentcenter, culc];
+           var map = new google.maps.Map(document.getElementById('map'), {
+             zoom: 18,
+             center: gtech
+           });
+           var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<id="firstHeading" class="firstHeading"><font size="+2"><b>Student Center (3)</font></b>'+
+      '<div id="bodyContent">'+
+      '<br/><b><font size = "-1">Second Floor (2) </b>: Two microwaves in the food court near the Dunkin Donuts' +
+      '<br/><b>First Floor (1) </b>: One microwave next to the Chick-fil-a</font>'
+      '</div>'+
+      '</div>';
+
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+           for (var i = 0; i < microwave_locations.length; i++) {
+             var marker = new google.maps.Marker({
+               position: microwave_locations[i],
+               map: map,
+               title: 'xxx'
+             });
+             marker.setMap(map);
+             marker.addListener('click', function() {
+              infowindow.open(map, marker);
+             })
+           };
           }
 
 
