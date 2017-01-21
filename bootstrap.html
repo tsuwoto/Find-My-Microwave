@@ -63,7 +63,7 @@
            var culc = {lat: 33.774953, lng: -84.396295};
            var love = {lat: 33.776727, lng: -84.401842};
            var klaus = {lat: 33.777191, lng: -84.396202};
-           var ibb = {lat: 33.7507526, lng: -84.3855389};
+           var ibb = {lat: 33.779010, lng: -84.397259};
            var smith = {lat: 33.7736495, lng: -84.3951647};
            var microwave_locations = [studentcenter, culc, love, klaus, ibb, smith];
            var map = new google.maps.Map(document.getElementById('map'), {
@@ -76,7 +76,7 @@
               '<id="firstHeading" class="firstHeading"><font size="+2"><b>Student Center (4)</font></b>'+
               '<div id="bodyContent">'+
               '<br/><b><font size = "-1">Second Floor (2) </b>: Two microwaves in the food court near the Dunkin&#39 Donuts' +
-              '<br/><b>First Floor (2) </b>: One microwave next to the Chick-fil-a; one microwave in the back of Burdell&#39s</font>'
+              '<br/><b>First Floor (2) </b>: One microwave next to the Chick-fil-a; one microwave in the back of Burdell&#39s</font>'+
               '</div>'+
               '</div>';
             var culcinfowin = '<div id="content">'+
@@ -84,7 +84,7 @@
               '</div>'+
               '<id="firstHeading" class="firstHeading"><font size="+2"><b>Clough Undergraduate Learning Commons</font></b>'+
               '<div id="bodyContent">'+
-              '<br/><b><font size = "-1">Room 284</b>: Second floor CULC, requires Buzzcard access, locked after hours </font>'
+              '<br/><b><font size = "-1">Room 284</b>: Second floor CULC, requires Buzzcard access(possibly faculty only), locked after hours </font>'+
               '</div>'+
               '</div>';
             var loveinfowin = '<div id="content">'+
@@ -92,7 +92,7 @@
               '</div>'+
               '<id="firstHeading" class="firstHeading"><font size="+2"><b>Erskine Love Jr. Manufacturing Building</font></b>'+
               '<div id="bodyContent">'+
-              '<br/><font size="-1">First floor atrium under the stairs</font>'
+              '<br/><font size="-1">First floor atrium under the stairs</font>'+
               '</div>'+
               '</div>';
             var klausinfowin = '<div id="content">'+
@@ -100,7 +100,7 @@
               '</div>'+
               '<id="firstHeading" class="firstHeading"><font size="+2"><b>Klaus (2)</font></b>'+
               '<div id="bodyContent">'+
-              '<br/><font size="-1">Breakroom on second and third floors near giant stairs</font>'
+              '<br/><font size="-1">Breakroom on second and third floors near giant stairs</font>'+
               '</div>'+
               '</div>';
             var ibbinfowin = '<div id="content">'+
@@ -108,39 +108,43 @@
               '</div>'+
               '<id="firstHeading" class="firstHeading"><font size="+2"><b>Parker H. Petite Science Center</font></b>'+
               '<div id="bodyContent">'+
-              '<br/><font size="-1">Rear of the building by the vending machines</font>'
+              '<br/><font size="-1">Rear of the building by the vending machines</font>'+
               '</div>'+
               '</div>';
             var smithinfowin = '<div id="content">'+
               '<div id="siteNotice">'+
               '</div>'+
-              '<id="firstHeading" class="firstHeading"><font size="+2"><b>D.M. Smith/font></b>'+
+              '<id="firstHeading" class="firstHeading"><font size="+2"><b>D.M. Smith</font></b>'+
               '<div id="bodyContent">'+
-              '<br/><font size="-1">basement lounge/kitchen near entrance from Freshman Hill</font>'
+              '<br/><font size="-1">basement lounge/kitchen near entrance from Freshman Hill</font>'+
               '</div>'+
               '</div>';
             var loc_info = [scinfowin, culcinfowin, loveinfowin, klausinfowin, ibbinfowin, smithinfowin];
 
 
 
-           for (var i = 0; i < microwave_locations.length; i++) {
-             var marker = new google.maps.Marker({
-               position: microwave_locations[i],
-               map: map,
-
-             });
-             marker.setMap(map);
-             if (loc_info.length == microwave_locations.length) {
-              var infowindow = new google.maps.InfoWindow({
-               content: loc_info[i];
-               });
-             marker.addListener('click', function() {
-              infowindow.open(map, marker);
-             })
-           };
+            for (var i = 0; i < microwave_locations.length; i++) {
+              var marker = new google.maps.Marker({
+                position: microwave_locations[i],
+                map: map,
+                index: i
+              });
+              marker.setMap(map);
+              if (loc_info.length == microwave_locations.length) {
+                marker.addListener('click', function() {
+                  if (curInfo != null){
+                    curInfo.close();
+                  }
+                  curInfo = new google.maps.InfoWindow({
+                    content: loc_info[this.index]
+                  });
+                  curInfo.open(map, this);
+                });
+              };
             }
-
           }
+          var curInfo = null
+
 
 
         </script>
