@@ -9,7 +9,12 @@
     </style>
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
+    <h3><center>Microwaves at Tech</center></h3>
+
+
+
+
+
     <div id="map"></div>
     <script>
       function initMap() {
@@ -23,9 +28,36 @@
           map: map
         });
       }
+
+
+
+
+
+
+
+
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuJbQZxVReStcBJIQ2rV6K2DfeCPlcWr4&callback=initMap">
     </script>
+
+
+    <br><b><center>Tell Us About Your Microwaves!</center></b><br>
+  <form><center>
+    Building
+    <input type="text" name="Building"><br>
+    <br>Room    
+    <input type="text" name="Room">
+  </center></form>
+  <center><br>Is the room buzzcard-access only?
+  <input type="radio" name="Cooking Level" value="Head Chef" />Yes
+  <input type="radio" name="Cooking Level" value="Sous Chef" />No<br/></center><br>
+  <center><input type="submit"></center>
+
+
+
+
+
+
   </body>
 </html>
