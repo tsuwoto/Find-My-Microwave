@@ -48,20 +48,6 @@
     </script>
 
 
-<!--     <br><b><center>Tell Us About Your Microwaves!</center></b><br>
-  <formmethod="post" name="myemailform" action="form-to-email.php">><center>
-    Building
-    <input type="text" name="Building"><br>
-    <br>Room    
-    <input type="text" name="Room">
-  </center></form>
-  <center><br>Is the room buzzcard-access only?
-  <input type="radio" name="Buzzcard" value="Yes" />Yes
-  <input type="radio" name="Buzzcard" value="No" />No<br/></center><br>
-  <center><input type="submit"></center> -->
-  
-<!-- ?> -->
-
 
 <!DOCTYPE html>
 <head>
@@ -69,7 +55,7 @@
 </head>
 <body>
 
-<br><b><center>Tell Us About Your Microwaves!</center></b><br>
+<br><b><center>Tell Us About Your Microwaves</center></b><br>
 <form action="" method="post">
 <center>Building: <input type="text" name="Building"></center><br>
 <center>Room: <input type="text" name="Room"></center><br>
@@ -87,15 +73,16 @@ if(isset($_POST['submit'])){
     $to = "amandahui@gatech.edu";
     $from = $_POST['pretendemail@gatech.edu'];
     $Building = $_POST['Building'];
+    $Room = $_POST['Room'];
+    $Buzzcard = $_POST['Buzzcard'];
     $subject = "Microwaves at Tech Suggestion";
-    <!-- $subject2 = "Copy of your form submission to Microwaves at Tech"; -->
+    //$subject2 = "Copy of your form submission to Microwaves at Tech"; -->
     $message = $Building . $Room . $Buzzcard;
-    <!-- $message2 = "Here is a copy of your message " . $Building . $Room . $Buzzcard; -->
-
+    //$message2 = "Here is a copy of your message " . $Building . $Room . $Buzzcard; -->
     $headers = "From:" . $from;
     $headers2 = "From:" . $to;
     mail($to,$subject,$message,$headers);
-    <!-- mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender -->
+    //mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender -->
     echo "Mail Sent. Thank you for helping make Tech a better place :)";
     }
 ?>

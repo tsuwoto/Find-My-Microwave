@@ -75,6 +75,11 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuJbQZxVReStcBJIQ2rV6K2DfeCPlcWr4&callback=initMap">
         </script>
 
+<!DOCTYPE html>
+<head>
+<title>Form submission</title>
+</head>
+<body>
 
       <div class="row marketing">
         <div class="col-lg-6">
@@ -85,12 +90,32 @@
             <input type="text" name="Room">
             </form>
             <br><br>Is the room buzzcard-access only?&nbsp
-            <input type="radio" name="Cooking Level" value="Restricted" />Yes &nbsp
-            <input type="radio" name="Cooking Level" value="Unrestricted" />No<br/><br>
+            <input type="radio" name="Buzzcard" value="Yes" />Yes &nbsp
+            <input type="radio" name="Buzzcard" value="No" />No<br/><br>
            <input type="submit">
            </div>
           <form>
 
+
+<!-- REMOVE COMMENTS TO USE PHP TO SEND FORMS TO A EMAIL -->
+<!-- <?  -->
+<!-- if(isset($_POST['submit'])){ -->
+    <!-- $to = "pretendemail@gatech.edu"; //INSERT YOUR EMAIL HERE -->
+    <!-- $from = $_POST['pretendemail@gatech.edu']; -->
+    <!-- $Building = $_POST['Building']; -->
+    <!-- $Room = $_POST['Room']; -->
+    <!-- $Buzzcard = $_POST['Buzzcard']; -->
+    <!-- $subject = "Microwaves at Tech Suggestion"; -->
+    <!-- //$subject2 = "Copy of your form submission to Microwaves at Tech"; --> -->
+    <!-- $message = $Building . $Room . $Buzzcard; -->
+    <!-- //$message2 = "Here is a copy of your message " . $Building . $Room . $Buzzcard; --> -->
+    <!-- $headers = "From:" . $from; -->
+    <!-- $headers2 = "From:" . $to; -->
+    <!-- mail($to,$subject,$message,$headers); -->
+    <!-- //mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender --> -->
+    <!-- echo "Mail Sent. Thank you for helping make Tech a better place :)"; -->
+    <!-- } -->
+<!-- ?> -->
 
 
       </div>
